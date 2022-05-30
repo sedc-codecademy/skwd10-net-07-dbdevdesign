@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# SQL Server Management Studio Solution File, Format Version 18.00
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{4F2E2C19-372F-40D8-9FA7-9D2138C6997A}") = "Databases-G2-L2-Filtering-Relations", "Databases-G2-L2-Filtering-Relations\Databases-G2-L2-Filtering-Relations.ssmssqlproj", "{76812A8D-2BDF-477C-9060-01B28FDEC264}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Default|Default = Default|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{76812A8D-2BDF-477C-9060-01B28FDEC264}.Default|Default.ActiveCfg = Default
+		{10D5C1F3-5951-42F3-91E1-B5A3404CAE60}.Default|Default.ActiveCfg = Default
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D6AEFE9E-4736-424E-A32F-0E602941FB41}
+	EndGlobalSection
+EndGlobal
