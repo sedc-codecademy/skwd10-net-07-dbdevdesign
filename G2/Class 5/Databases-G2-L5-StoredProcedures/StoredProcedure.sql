@@ -5,7 +5,7 @@ BEGIN
 	PRINT 'Second variable is ' + @variableTwo;
 END
 
-EXEC PrintVariables @variableOne = '1',  @variableTwo = 'Variable Two'
+--EXEC PrintVariables @variableOne = '1',  @variableTwo = 'Variable Two'
 
 DECLARE	@ReturnValue int
 EXEC @ReturnValue = PrintVariables
