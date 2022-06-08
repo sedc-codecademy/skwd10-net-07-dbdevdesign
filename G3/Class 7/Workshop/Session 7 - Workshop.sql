@@ -288,6 +288,12 @@ VALUES(14, 2)
 GO
 /* ------------------------------------------------------------------------ */
 
+INSERT INTO OrderDetails(OrderId, PizzaId)
+VALUES (1, 1), (1, 2), (1, 3), 
+	   (2, 1), (2, 4), (2, 6), (2, 14),
+	   (3, 1), (3, 3), (3, 10), (3, 14),
+	   (4, 1), (4, 4), (4, 6), (4, 14)
+
 
 INSERT INTO Roles(Name) 
 VALUES ('Admin'), ('Manager'), ('Employee')
@@ -296,3 +302,28 @@ GO
 INSERT INTO UserRoles(UserId, RoleId)
 VALUES (1, 1), (2, 3), (3, 2), (1, 2), (1, 3)
 GO
+
+
+
+-- Create function and name it GetUserFullName, 
+-- that will CONCAT the FirstName and the LastName of the users
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
