@@ -308,22 +308,72 @@ GO
 -- Create function and name it GetUserFullName, 
 -- that will CONCAT the FirstName and the LastName of the users
 
+CREATE FUNCTION GetUserFullName
+(
+	@FirstName nvarchar(100),
+	@LastName nvarchar(100)
+)
+RETURNS NVARCHAR(255)
+AS
+BEGIN
+	RETURN CONCAT(@FirstName, ' ', @LastName);
+END
+GO
+
+SELECT dbo.GetUserFullName('Greg', 'Gregsky')
+
+SELECT dbo.GetUserFullName(u.FirstName, u.LastName) AS [User full name]
+FROM Users u
+GO
+-- Create view that will show all pizzas that are 
+-- not delivered yet and the full names of the users waitng for them
+
+CREATE VIEW [Users waiting for orders]
+AS
+SELECT p.Name, u.FirstName, u.LastName
+FROM Pizzas p
+INNER JOIN OrderDetails od on od.PizzaId = p.Id
+INNER JOIN Orders o on o.Id = od.OrderId
+INNER JOIN Users u on u.Id = o.UserId
+WHERE o.IsDelivered = 0
+GO
 
 
+select Name, FirstName, LastName, Count(*) AS NumberOfOrders from [Users waiting for orders]
+GROUP BY Name, FirstName, LastName
+GO
 
+-- Create store procedure for inserting a new pizza in the DB
+-- by returning the id of the last inserted record
 
+CREATE OR ALTER PROCEDURE dbo.sp_InsertPizza
+(
+	@Name NVARCHAR(100),  
+	@SizeId SMALLINT,
+	@Price DECIMAL(5,2),
+	@PizzaID int
+)
+AS
+BEGIN 
+	INSERT INTO Pizzas(Name, SizeId, Price)
+	VALUES(@Name, @SizeId, @Price)
 
+	SET @PizzaID = SCOPE_IDENTITY();
+	
+	SELECT * 
+	FROM Pizzas 
+	WHERE Id = @PizzaID
+END
+GO
 
+DECLARE @ReturnValue int, 
+		@PizzaIdOUT int 
 
+EXEC @ReturnValue = dbo.sp_InsertPizza
+					@Name = 'Oliva',
+					@SizeId = 3,
+					@Price = 300,
+					@PizzaId = @PizzaIdOUT
 
-
-
-
-
-
-
-
-
-
-
+SELECT @ReturnValue AS ReturnValue, @PizzaIdOUT AS EmployeeIdOUT
 
